@@ -2,7 +2,7 @@ from math import pi
 
 
 def circularConeVolume(height, radius):
-    return 1/3 * pi * radius**2 * height
+    return 1/3 * height * pi * radius**2 
 
 
 def sphereVolume(radius):

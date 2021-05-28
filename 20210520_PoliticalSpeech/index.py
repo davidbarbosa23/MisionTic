@@ -9,13 +9,13 @@ promises = ["trabajaré por", "garantizaré", "protegeré", "velaré por", "prom
 benefits = ["la educacion", "el empleo", "la seguridad", "la paz", "la igualdad", "la salud"]
 groups = ["del país", "de la ciudad", "de la comunidad", "de la población", "para toda la gente", "de cada colombiano"]
 
-subjectSelected = random.choice(subjects) 
-mentionSelected = random.choice(mentions) 
-decisionSelected = random.choice(decisions) 
-actionSelected = random.choice(actions)
-circSelected = random.choice(circs) 
-promiseSelected = random.choice(promises) 
-benefitSelected = random.choice(benefits)
-groupSelected = random.choice(groups)
+subject_selected = random.choice(subjects).capitalize() 
+mention_selected = random.choice(mentions) 
+decision_selected = random.choice(decisions) 
+action_selected = random.choice(actions)
+circ_selected = random.choice(circs) 
+promise_selected = random.choice(promises) 
+benefit_selected = random.choice(benefits)
+group_selected = random.choice(groups)
 
-print("Discurso: " + subjectSelected.capitalize() + " " + mentionSelected + " " + decisionSelected + " " + actionSelected + " " + circSelected + " " + promiseSelected + " " + benefitSelected + " " + groupSelected)
+print("Discurso: " + subject_selected.capitalize() + " " + mention_selected + " " + decision_selected + " " + action_selected + " " + circ_selected + " " + promise_selected + " " + benefit_selected + " " + group_selected)

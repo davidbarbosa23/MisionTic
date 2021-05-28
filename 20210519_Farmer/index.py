@@ -1,4 +1,4 @@
-def counter(animals, foots):
+def farmer_counter(animals, foots):
     rabbits = 0
     chickens = animals
 
@@ -15,4 +15,4 @@ animals = int(input())
 print("¿Cuántas patas?")
 foots = int(input())
 print("El resultado es:")
-print(counter(animals, foots))
+print(farmer_counter(animals, foots))

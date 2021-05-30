@@ -1,15 +1,19 @@
-# PROBLEMA
-# El número de contagiados de Covid-19 en el país de NuncaLandia se
-# duplica cada día. Hacer un programa que diga el número total de
-# personas que se han contagiado cuando pasen D días a partir de hoy,
-# si el número de contagiados actuales es C.
+"""
+PROBLEMA
+El número de contagiados de Covid-19 en el país de NuncaLandia se
+duplica cada día. Hacer un programa que diga el número total de
+personas que se han contagiado cuando pasen D días a partir de hoy,
+si el número de contagiados actuales es C.
 
-# PSEUDO
-# D = int - Días que quiero estimar
-# C = int - Contagiados actuales
-# PROYECCIÓN: C * (2^D)
+PSEUDO
+D = int - Días que quiero estimar
+C = int - Contagiados actuales
+PROYECCIÓN: C * (2^D)
 
-# SOLUCIÓN
+SOLUCIÓN
+"""
+
+
 def projection(current_infected, days):
     return current_infected * 2 ** days
 

@@ -1,3 +1,12 @@
+def compound_interest(debt, months):
+    return debt * 1.03 ** months
+
+
+debt = int(input('Prestamo: '))
+months = int(input('Meses: '))
+
+print(f"Pago total en {months} meses: {compound_interest(debt, months)}")
+
 """
 PROBLEMA
 Si pido prestados P cantidad de pesos para pagarlos en dos meses, si
@@ -8,14 +17,4 @@ PSEUDO
 P = int Dinero prestado
 M = int Meses a pagar
 DEUDA CON INTERÉS COMPUESTO = P * (1 + 0.03) ^ M
-
-SOLUCIÓN
 """
-def compound_interest(debt, months):
-    return debt * 1.03 ** months
-
-
-debt = int(input('Prestamo: '))
-months = int(input('Meses: '))
-
-print(f"Pago total en {months} meses: {compound_interest(debt, months)}")

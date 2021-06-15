@@ -1,3 +1,21 @@
+name = input()
+unit_price = int(input())
+sell_price = int(input())
+units = int(input())
+
+
+def profit():
+    benefit = sell_price - unit_price
+    return benefit * units
+
+
+print(f"Producto: {name}")
+print(f"CU: ${unit_price}")
+print(f"PVP: ${sell_price}")
+print(f"Unidades Disponibles: ${units}")
+print(f"Ganancia: ${profit()}")
+
+
 """
 El Centro Comercial Unaleño desea comenzar a crear un carrito de compras. Para esto se requiere una tarea que será de gran utilidad a futuro: Leer y clasificar la información sobre un producto. 
 
@@ -30,20 +48,3 @@ Chocolatinas Cohete  |  Producto: Chocolatinas Cohete
                      |  Ganancia: $250000 
 
 """
-
-name = input()
-unit_price = int(input())
-sell_price = int(input())
-units = int(input())
-
-
-def profit():
-    benefit = sell_price - unit_price
-    return benefit * units
-
-
-print(f"Producto: {name}")
-print(f"CU: ${unit_price}")
-print(f"PVP: ${sell_price}")
-print(f"Unidades Disponibles: ${units}")
-print(f"Ganancia: ${profit()}")

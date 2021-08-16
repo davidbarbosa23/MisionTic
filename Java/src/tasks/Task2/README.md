@@ -5,7 +5,7 @@ Estas publicaciones se dividen en dos tipos, Libros y Revistas. De los libros se
 
 Considere la especificación del siguiente diagrama de clases para este reto:
  
-![Diagram](../../../Assets/img/Cycle2_Task2_Diagram.png)
+![Diagram](../../../../Assets/img/Cycle2_Task2_Diagram.png)
  
 ## Procesar Comandos
 

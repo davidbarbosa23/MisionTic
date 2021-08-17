@@ -11,7 +11,7 @@ Considere la especificación del siguiente diagrama de clases para este reto:
 
 En la clase Librería, se debe definir la función procesar comandos que realiza las siguientes operaciones:
 
-### Opción 1 : Agregar contacto
+### Opción 1: Agregar contacto
 
 Se puede añadir Libro con el siguiente comando:
 

@@ -11,7 +11,7 @@ Considere la especificación del siguiente diagrama de clases para este reto:
 
 En la clase Librería, se debe definir la función procesar comandos que realiza las siguientes operaciones:
 
-### Agregar contacto: (Opción 1)
+### Opción 1 : Agregar contacto
 
 Se puede añadir Libro con el siguiente comando:
 
@@ -34,7 +34,7 @@ Se puede añadir una revista con el siguiente comando:
 1_El rey Rosado_116_Revista_209
 ```
 
-### Mostrar contactos de la agenda: (Opción 2)
+### Opción 2: Mostrar contactos de la agenda
 
 Se debe mostrar la frase: `***Publicaciones disponibles***` seguida por las publicaciones en el orden en el que fueron agregadas.
 
@@ -54,7 +54,7 @@ tipo: Revista
 publicacion: #209
 ```
 
-### Salir: Opción 3
+### Opción 3: Salir
 
 ## Notas
 - Observe que el único comando que tiene salida es el mostrar.

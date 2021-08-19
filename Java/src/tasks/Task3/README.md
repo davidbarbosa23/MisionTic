@@ -47,4 +47,4 @@ Por su parte, la segunda bodega puede enviar los productos `["7", "9", "40", "53
 Sin embargo, no enviará la caja del cuarto producto sin recibir una a cambio.
 
 # Consideraciones adicionales
-Para la evaluación de este reto no necesita recibir entrada ni imprimir nada en pantalla. Se deben definir los métodos correctamente (respetando los nombres del enunciado) en un archivo llamado `Bodega.java` (No requiere un método "main"). Deben asegurarse de que este es el nombre de su archivo en la plataforma de moodle.
+Para la evaluación de este reto no necesita recibir entrada ni imprimir nada en pantalla. Se deben definir los métodos correctamente (respetando los nombres del enunciado) en un archivo llamado `Bodega.java` (No requiere un método `main`). Deben asegurarse de que este es el nombre de su archivo en la plataforma de moodle.

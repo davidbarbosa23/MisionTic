@@ -5,7 +5,6 @@ import tasks.Task2.Libreria;
 
 import java.util.Scanner;
 
-
 public class Main {
     private static void menu() {
         int choice;

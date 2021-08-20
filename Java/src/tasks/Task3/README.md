@@ -18,7 +18,7 @@ Es un método que, recibe 3 parámetros, el primero una lista de índices que id
 ```js
 filtrar_por_tipo([0, 1, 2, 4], ["tornillos", "pisos", "tuercas", "tornillos", "pisos", "pisos"], "tornillos")
 ```
-Retorna  la lista `[0, 2]`. 
+Retorna  la lista `[0, 3]`. 
 
 Nótese que la clase será usada por otro programa, así que por sugerencia de la consultora se usarán los índices empezando en cero.
 
@@ -26,7 +26,7 @@ Nótese que la clase será usada por otro programa, así que por sugerencia de l
 Otra operación común es comparar los productos disponibles entre bodegas, este método recibe dos listas de `String` (códigos internos de productos) y retorna una lista con los productos que están en la primera lista o bodega y no en la segunda bodega.
 ### Ejemplo
 ```js
-comparar_inventario(["12", "35", "54", "18", "25", "12", "23"], ["45", "12", "25","18","35"])
+comparar_inventarios(["12", "35", "54", "18", "25", "12", "23"], ["45", "12", "25","18","35"])
 ```
 Retorna la lista `["54", "23"]`. 
 
@@ -36,7 +36,7 @@ Los códigos en la lista de retorno deben mantener el tipo de dato `String`.
 Una función que recibe dos listas de códigos de productos repetidos en dos bodegas y retorna la cantidad de productos que se pueden reubicar entre bodegas sin afectar la cantidad de cajas en ellas.
 ### Ejemplo
 ```js
-reubicables([ "2", "3", "5", "8", "15", "23"], [ "2", "5", "7", "9", "23", "40", "53"])
+reubicables(["2", "3", "5", "8", "15", "23"], [ "2", "5", "7", "9", "23", "40", "53"])
 ```
 Retorna `3`. 
 

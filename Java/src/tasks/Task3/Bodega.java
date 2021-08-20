@@ -1,6 +1,7 @@
 package tasks.Task3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Bodega {
@@ -40,5 +41,27 @@ public class Bodega {
 
         if (firstLength < secondLength) return String.valueOf(firstLength);
         return String.valueOf(secondLength);
+    }
+
+    // This is just for test
+    public Bodega () {
+        System.out.println("\n");
+
+        List<String> stockItems = Arrays.asList("tornillos", "pisos", "tuercas", "tornillos", "pisos", "pisos");
+        System.out.println("tipos_almacenados: " + tipos_almacenados(stockItems));
+
+        List<Integer> codes = Arrays.asList(0, 1, 2, 3);
+        List<String> items = Arrays.asList("tornillos", "pisos", "tuercas", "tornillos", "pisos", "pisos");
+        System.out.println("filtrar_por_tipo: " + filtrar_por_tipo(codes, items, "tornillos"));
+
+        List<String> stockOne = Arrays.asList("12", "35", "54", "18", "25", "12", "23");
+        List<String> stockTwo = Arrays.asList("45", "12", "25","18","35");
+        System.out.println("comparar_inventarios: " + comparar_inventarios(stockOne, stockTwo));
+
+        List<String> cellarOne = Arrays.asList("2", "3", "5", "8", "15", "23");
+        List<String> cellarTwo = Arrays.asList("2", "5", "7", "9", "23", "40", "53");
+        System.out.println("reubicables: " + reubicables(cellarOne, cellarTwo));
+
+        System.out.println("\n");
     }
 }

@@ -43,7 +43,9 @@ public class Bodega {
         return String.valueOf(secondLength);
     }
 
-    // This is just for test examples
+    /* 
+     * This method is just for test examples with main program
+     */
     public Bodega () {
         System.out.println("\n");
 

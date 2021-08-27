@@ -113,7 +113,7 @@ SELECT 'Consulta 3';
 SELECT .....;
 ```
 
-# ENTREGA
+## ENTREGA
 
 Para la entrega es necesario:
 

@@ -22,7 +22,7 @@ CREATE TABLE `producto` (
   `idproducto` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `precio` DECIMAL(8,2) NOT NULL,
-  PRIMARY KEY(idproducto)
+  PRIMARY KEY(`idproducto`)
 );
   
 INSERT INTO `producto` (`nombre`, `precio`) VALUES ("tornillo el general", 93277);

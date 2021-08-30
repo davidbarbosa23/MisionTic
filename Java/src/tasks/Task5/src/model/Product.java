@@ -1,11 +1,18 @@
 package model;
 
 public class Product {
-    private int     idproducto;
-    private String  nombre;
-    private float   precio;
+    private int idproducto;
+    private String nombre;
+    private double precio;
 
-    public Product (int idProduct, String name, float price) {
+    public static String TableName = "producto";
+
+    public Product(String name, double price) {
+        this.nombre = name;
+        this.precio = price;
+    }
+
+    public Product(int idProduct, String name, double price) {
         this.idproducto = idProduct;
         this.nombre = name;
         this.precio = price;
@@ -13,10 +20,6 @@ public class Product {
 
     public int getIdProduct() {
         return idproducto;
-    }
-
-    public void setIdProduct(int idProduct) {
-        this.idproducto = idProduct;
     }
 
     public String getName() {
@@ -27,11 +30,16 @@ public class Product {
         this.nombre = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return precio;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.precio = price;
+    }
+
+    public Object[] toArray() {
+        Object[] data = {idproducto, nombre, precio};
+        return data;
     }
 }

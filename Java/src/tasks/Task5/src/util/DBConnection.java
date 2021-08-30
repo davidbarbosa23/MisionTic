@@ -6,8 +6,11 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
+    static Connection conn = null;
+
     public static Connection getConnection() {
-        Connection conn = null;
+        if (conn != null)
+            return conn;
 
         try {
             conn = DriverManager.getConnection(DBProperties.dbURL, DBProperties.username, DBProperties.password);

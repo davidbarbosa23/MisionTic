@@ -10,6 +10,12 @@ public class Stock {
 
     public static String TableName = "almacena";
 
+    public Stock(int idStore, int idProduct, int quantity) {
+        this.idBodega = idStore;
+        this.idproducto = idProduct;
+        this.cantidad = quantity;
+    }
+
     public Stock(int idStock, int idStore, String storeName, int idProduct, String productName, int quantity) {
         this.idAlmacena = idStock;
         this.idBodega = idStore;
@@ -64,7 +70,6 @@ public class Stock {
     }
 
     public Object[] toArray() {
-        Object[] data = {nombreBodega, nombreProducto, cantidad};
-        return data;
+        return new Object[]{nombreBodega, nombreProducto, cantidad};
     }
 }

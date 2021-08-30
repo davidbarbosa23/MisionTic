@@ -39,7 +39,10 @@ public class Product {
     }
 
     public Object[] toArray() {
-        Object[] data = {idproducto, nombre, precio};
-        return data;
+        return new Object[]{idproducto, nombre, precio};
+    }
+
+    public String toString() {
+        return nombre;
     }
 }

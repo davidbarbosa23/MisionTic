@@ -9,6 +9,12 @@ public class Employee {
 
     public static String TableName = "empleado";
 
+    public Employee(int idStore, String name, int age) {
+        this.idBodega = idStore;
+        this.nombre = name;
+        this.edad = age;
+    }
+
     public Employee(int idStore, String storeName, int idEmployee, String name, int age) {
         this.idBodega = idStore;
         this.nombreBodega = storeName;
@@ -58,7 +64,6 @@ public class Employee {
     }
 
     public Object[] toArray() {
-        Object[] data = {idempleado, nombre, edad, nombreBodega};
-        return data;
+        return new Object[]{idempleado, nombre, edad, nombreBodega};
     }
 }

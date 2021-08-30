@@ -12,10 +12,10 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class ContentTables {
-    private static String[] employeeColumns = new String[]{"ID", "Nombre", "Edad", "Bodega"};
-    private static String[] productColumns = new String[]{"ID", "Nombre", "Precio"};
-    private static String[] stockColumns = new String[]{"Bodega", "Producto", "Cantidad"};
-    private static String[] storeColumns = new String[]{"ID", "Nombre", "Dirección"};
+    private static final String[] employeeColumns = new String[]{"ID", "Nombre", "Edad", "Bodega"};
+    private static final String[] productColumns = new String[]{"ID", "Nombre", "Precio"};
+    private static final String[] stockColumns = new String[]{"Bodega", "Producto", "Cantidad"};
+    private static final String[] storeColumns = new String[]{"ID", "Nombre", "Dirección"};
 
     public static JScrollPane getEmployeesTable() {
         DefaultTableModel tableModel = new DefaultTableModel();

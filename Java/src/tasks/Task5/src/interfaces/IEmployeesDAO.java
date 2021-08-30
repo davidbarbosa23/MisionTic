@@ -5,9 +5,13 @@ import model.Employee;
 import java.util.ArrayList;
 
 public interface IEmployeesDAO {
-    public ArrayList<Employee> getEmployeesList();
-    public Employee getEmployeeById(int id);
-    public void createEmployee(Employee employee);
-    public void updateEmployee(Employee employee);
-    public void deleteEmployeeById(int id);
+    ArrayList<Employee> getEmployeesList();
+
+    Employee getEmployeeById(int id);
+
+    void createEmployee(Employee employee);
+
+    void updateEmployee(Employee employee);
+
+    void deleteEmployeeById(int id);
 }

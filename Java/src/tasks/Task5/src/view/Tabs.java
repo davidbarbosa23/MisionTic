@@ -8,8 +8,6 @@ package view;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -39,11 +37,9 @@ public class Tabs extends JPanel {
         tabbedPane.addTab("Bodegas", panel4);
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 
-        tabbedPane.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                System.out.println("Tab: " + tabbedPane.getSelectedIndex());
-                actionButtons.setSelectedTab(tabbedPane.getSelectedIndex());
-            }
+        tabbedPane.addChangeListener(e -> {
+            System.out.println("Tab: " + tabbedPane.getSelectedIndex());
+            actionButtons.setSelectedTab(tabbedPane.getSelectedIndex());
         });
 
         //Add the tabbed pane to this panel.

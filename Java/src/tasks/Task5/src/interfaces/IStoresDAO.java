@@ -5,9 +5,13 @@ import model.Store;
 import java.util.ArrayList;
 
 public interface IStoresDAO {
-    public ArrayList<Store> getStoresList();
-    public Store getStoreById(int id);
-    public void createStore(Store store);
-    public void updateStore(Store store);
-    public void deleteStoreById(int id);
+    ArrayList<Store> getStoresList();
+
+    Store getStoreById(int id);
+
+    void createStore(Store store);
+
+    void updateStore(Store store);
+
+    void deleteStoreById(int id);
 }

@@ -23,31 +23,31 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 public class ContentTables {
-    IEmployeesDAO employeesDAO;
-    EmployeesController employeesController;
-    IProductsDAO productsDAO;
-    ProductsController productsController;
-    IStocksDAO stocksDAO;
-    StocksController stocksController;
-    IStoresDAO storesDAO;
-    StoresController storesController;
+    private IEmployeesDAO employeesDAO;
+    private EmployeesController employeesController;
+    private IProductsDAO productsDAO;
+    private ProductsController productsController;
+    private IStocksDAO stocksDAO;
+    private StocksController stocksController;
+    private IStoresDAO storesDAO;
+    private StoresController storesController;
 
-    JTable employeesTable = new JTable() {
+    private JTable employeesTable = new JTable() {
         public boolean isCellEditable(int rowIndex, int colIndex) {
             return false;
         }
     };
-    JTable productsTable = new JTable() {
+    private JTable productsTable = new JTable() {
         public boolean isCellEditable(int rowIndex, int colIndex) {
             return false;
         }
     };
-    JTable stocksTable = new JTable() {
+    private JTable stocksTable = new JTable() {
         public boolean isCellEditable(int rowIndex, int colIndex) {
             return false;
         }
     };
-    JTable storesTable = new JTable() {
+    private JTable storesTable = new JTable() {
         public boolean isCellEditable(int rowIndex, int colIndex) {
             return false;
         }

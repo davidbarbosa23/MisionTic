@@ -57,9 +57,8 @@ public class TabsActionsController implements ActionListener {
             formView = new FormStore(contentTables, actionEvent.getActionCommand());
         }
 
-        if (formView != null && formView instanceof JFrame) {
-            JFrame frame = (JFrame) formView;
-            frame.setVisible(true);
-        }
+        if (formView != null && formView instanceof JFrame)
+            ((JFrame) formView).setVisible(true);
+
     }
 }

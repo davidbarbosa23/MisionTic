@@ -60,8 +60,8 @@ public class FormStock extends JFrame implements IFormView {
         if (cmd.equals("update")) {
             setTitle("Actualizar Almacén");
             stock = contentTables.getSelectedStock();
-            this.storeCbx.getModel().setSelectedItem(stock.getStoreName()); // ToDo: Get Store Object
-            this.productCbx.getModel().setSelectedItem(stock.getProductName()); // ToDo: Get Product Object
+            this.storeCbx.getModel().setSelectedItem(ListsController.getStoreById(stock.getIdStore()));
+            this.productCbx.getModel().setSelectedItem(ListsController.getProductById(stock.getIdProduct()));
             this.quantityTxt.setText(String.valueOf(stock.getQuantity()));
         } else {
             setTitle("Agregar Almacén");

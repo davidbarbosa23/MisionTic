@@ -14,8 +14,18 @@ public class ListsController {
         return productsDAO.getProductsList();
     }
 
+    public static Product getProductById(int id) {
+        ProductsDAO productsDAO = new ProductsDAO();
+        return productsDAO.getProductById(id);
+    }
+
     public static ArrayList<Store> getStores() {
         StoresDAO storesDAO = new StoresDAO();
         return storesDAO.getStoresList();
+    }
+
+    public static Store getStoreById(int id) {
+        StoresDAO storesDAO = new StoresDAO();
+        return storesDAO.getStoreById(id);
     }
 }

@@ -61,7 +61,7 @@ public class FormEmployee extends JFrame implements IFormView {
             employee = contentTables.getSelectedEmployee();
             this.nameTxt.setText(employee.getName());
             this.ageTxt.setText(String.valueOf(employee.getAge()));
-            this.storeCbx.getModel().setSelectedItem(employee.getStoreName()); // ToDo: Get Store Object
+            this.storeCbx.getModel().setSelectedItem(ListsController.getStoreById(employee.getIdStore()));
         } else {
             setTitle("Agregar Empleado");
             this.nameTxt.setText("");

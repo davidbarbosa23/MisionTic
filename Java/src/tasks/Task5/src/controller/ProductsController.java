@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.ProductsDAO;
 import interfaces.IProductsDAO;
 import model.Product;
 
@@ -10,8 +11,8 @@ public class ProductsController {
     private IProductsDAO productsDAO;
     private static final String[] columns = new String[]{"ID", "Nombre", "Precio"};
 
-    public ProductsController(IProductsDAO productsDAO) {
-        this.productsDAO = productsDAO;
+    public ProductsController() {
+        this.productsDAO = new ProductsDAO();
     }
 
     public DefaultTableModel get() {
@@ -22,5 +23,9 @@ public class ProductsController {
             model.addRow(product.toArray());
 
         return model;
+    }
+
+    public Product getProductById(int id) {
+        return productsDAO.getProductById(id);
     }
 }

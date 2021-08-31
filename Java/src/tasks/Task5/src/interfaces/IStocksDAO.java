@@ -14,4 +14,8 @@ public interface IStocksDAO {
     void updateStock(Stock stock);
 
     void deleteStockById(int id);
+
+    void deleteStocksByProductId(int id);
+
+    void deleteStocksByStoreId(int id);
 }

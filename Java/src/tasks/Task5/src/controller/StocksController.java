@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.StocksDAO;
 import interfaces.IStocksDAO;
 import model.Stock;
 
@@ -10,8 +11,8 @@ public class StocksController {
     private IStocksDAO stocksDAO;
     private static final String[] columns = new String[]{"ID", "Bodega", "Producto", "Cantidad"};
 
-    public StocksController(IStocksDAO stocksDAO) {
-        this.stocksDAO = stocksDAO;
+    public StocksController() {
+        this.stocksDAO = new StocksDAO();
     }
 
     public DefaultTableModel get() {
@@ -22,5 +23,9 @@ public class StocksController {
             model.addRow(stock.toArray());
 
         return model;
+    }
+
+    public Stock getStockById(int id) {
+        return stocksDAO.getStockById(id);
     }
 }

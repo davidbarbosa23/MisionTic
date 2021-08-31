@@ -1,9 +1,21 @@
 package controller;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import interfaces.IFormView;
+import DAO.EmployeesDAO;
+import DAO.ProductsDAO;
+import DAO.StocksDAO;
+import DAO.StoresDAO;
+import interfaces.IEmployeesDAO;
+import interfaces.IProductsDAO;
+import interfaces.IStocksDAO;
+import interfaces.IStoresDAO;
+import model.Employee;
+import model.Product;
+import model.Stock;
+import model.Store;
 import view.ActionButtons;
 import view.ContentTables;
 import view.FormEmployee;
@@ -11,54 +23,123 @@ import view.FormProduct;
 import view.FormStock;
 import view.FormStore;
 
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class TabsActionsController implements ActionListener {
     private ActionButtons actionButtons;
     private ContentTables contentTables;
-    private IFormView formView = null;
+    private Frame mainFrame;
 
     public TabsActionsController(ActionButtons actionButtons, ContentTables contentTables) {
         this.actionButtons = actionButtons;
         this.contentTables = contentTables;
     }
 
+    private int deleteDialog(String title, String desc) {
+        return JOptionPane.showConfirmDialog(
+                mainFrame,
+                "¿Seguro desea eliminar este registro de " + title + "? " + desc,
+                "Alerta de borrado",
+                JOptionPane.OK_CANCEL_OPTION
+        );
+    }
+
+    private void noSelectedDialog() {
+        JOptionPane.showMessageDialog(mainFrame, "Primero debe seleccionar un registro" );
+    }
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         System.out.println("Action Tab: " + actionButtons.getSelectedTab() + " - Command: " + actionEvent.getActionCommand());
 
+        // Dispose frames except Main, before launch other frame
+        for (Frame fr : Frame.getFrames()) {
+            String specificFrameName = fr.getClass().getName();
+            if (specificFrameName.equals("view.Main")) mainFrame = fr;
+            else fr.dispose();
+        }
+
         // Tab = Stock
         if (actionButtons.getSelectedTab() == 0) {
+            if ((actionEvent.getActionCommand().equals("update") || actionEvent.getActionCommand().equals("delete")) && contentTables.getSelectedStock() == null) {
+                noSelectedDialog();
+                return;
+            }
             if (actionEvent.getActionCommand().equals("delete")) {
-                // ToDo: Delete action
-            } else formView = new FormStock(contentTables, actionEvent.getActionCommand());
+                int option = deleteDialog("almacén", "");
+                if (option == 0 && contentTables != null) {
+                    Stock stock = contentTables.getSelectedStock();
+                    IStocksDAO stocksDAO = new StocksDAO();
+                    stocksDAO.deleteStockById(stock.getIdStock());
+                    contentTables.loadStocks();
+                }
+            } else new FormStock(contentTables, actionEvent.getActionCommand()).setVisible(true);
+
         }
 
         // Tab = Product
         if (actionButtons.getSelectedTab() == 1) {
-            if (actionEvent.getActionCommand().equals("delete")) {
-                // ToDo: Delete action
+            if ((actionEvent.getActionCommand().equals("update") || actionEvent.getActionCommand().equals("delete")) && contentTables.getSelectedProduct() == null) {
+                noSelectedDialog();
+                return;
             }
-            formView = new FormProduct(contentTables, actionEvent.getActionCommand());
+            if (actionEvent.getActionCommand().equals("delete")) {
+                int option = deleteDialog("producto", "Esta acción eliminará los registros de almacén relacionados al producto.");
+                if (option == 0 && contentTables != null) {
+                    Product product = contentTables.getSelectedProduct();
+
+                    IStocksDAO stocksDAO = new StocksDAO();
+                    stocksDAO.deleteStocksByProductId(product.getIdProduct());
+                    contentTables.loadStocks();
+
+                    IProductsDAO productsDAO = new ProductsDAO();
+                    productsDAO.deleteProductById(product.getIdProduct());
+                    contentTables.loadProducts();
+                }
+            } else new FormProduct(contentTables, actionEvent.getActionCommand()).setVisible(true);
         }
 
         // Tab = Employee
         if (actionButtons.getSelectedTab() == 2) {
+            if ((actionEvent.getActionCommand().equals("update") || actionEvent.getActionCommand().equals("delete")) && contentTables.getSelectedEmployee() == null) {
+                noSelectedDialog();
+                return;
+            }
             if (actionEvent.getActionCommand().equals("delete")) {
-                // ToDo: Delete action
-            } else formView = new FormEmployee(contentTables, actionEvent.getActionCommand());
+                int option = deleteDialog("empleado", "");
+                if (option == 0 && contentTables != null) {
+                    Employee employee = contentTables.getSelectedEmployee();
+                    IEmployeesDAO employeesDAO = new EmployeesDAO();
+                    employeesDAO.deleteEmployeeById(employee.getIdEmployee());
+                    contentTables.loadEmployees();
+                }
+            } else new FormEmployee(contentTables, actionEvent.getActionCommand()).setVisible(true);
         }
 
         // Tab = Store
         if (actionButtons.getSelectedTab() == 3) {
-            if (actionEvent.getActionCommand().equals("delete")) {
-                // ToDo: Delete action
+            if ((actionEvent.getActionCommand().equals("update") || actionEvent.getActionCommand().equals("delete")) && contentTables.getSelectedStore() == null) {
+                noSelectedDialog();
+                return;
             }
-            formView = new FormStore(contentTables, actionEvent.getActionCommand());
+            if (actionEvent.getActionCommand().equals("delete")) {
+                int option = deleteDialog("bodega", "Esta acción eliminará los registros de almacén y de empleados relacionados a la bodega.");
+                if (option == 0 && contentTables != null) {
+                    Store store = contentTables.getSelectedStore();
+
+                    IStocksDAO stocksDAO = new StocksDAO();
+                    stocksDAO.deleteStocksByStoreId(store.getIdStore());
+                    contentTables.loadStocks();
+
+                    IEmployeesDAO employeesDAO = new EmployeesDAO();
+                    employeesDAO.deleteEmployeeByStoreId(store.getIdStore());
+                    contentTables.loadEmployees();
+
+                    IStoresDAO storesDAO = new StoresDAO();
+                    storesDAO.deleteStoreById(store.getIdStore());
+                    contentTables.loadStores();
+                }
+            } else new FormStore(contentTables, actionEvent.getActionCommand()).setVisible(true);
         }
-
-        if (formView != null && formView instanceof JFrame)
-            ((JFrame) formView).setVisible(true);
-
     }
 }

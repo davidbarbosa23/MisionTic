@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.EmployeesDAO;
 import interfaces.IEmployeesDAO;
 import model.Employee;
 
@@ -10,8 +11,8 @@ public class EmployeesController {
     private IEmployeesDAO employeesDAO;
     private static final String[] columns = new String[]{"ID", "Nombre", "Edad", "Bodega"};
 
-    public EmployeesController(IEmployeesDAO employeesDAO) {
-        this.employeesDAO = employeesDAO;
+    public EmployeesController() {
+        this.employeesDAO = new EmployeesDAO();
     }
 
     public DefaultTableModel get() {
@@ -22,5 +23,9 @@ public class EmployeesController {
             model.addRow(employee.toArray());
 
         return model;
+    }
+
+    public Employee getEmployeeById(int id) {
+        return employeesDAO.getEmployeeById(id);
     }
 }

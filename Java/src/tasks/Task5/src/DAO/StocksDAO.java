@@ -125,4 +125,34 @@ public class StocksDAO implements IStocksDAO {
             ex.printStackTrace();
         }
     }
+
+    public void deleteStocksByProductId(int id) {
+        if (conn == null)
+            conn = DBConnection.getConnection();
+
+        String query = "DELETE FROM `" + Stock.TableName + "` WHERE `idproducto` = ?;";
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void deleteStocksByStoreId(int id) {
+        if (conn == null)
+            conn = DBConnection.getConnection();
+
+        String query = "DELETE FROM `" + Stock.TableName + "` WHERE `idBodega` = ?;";
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

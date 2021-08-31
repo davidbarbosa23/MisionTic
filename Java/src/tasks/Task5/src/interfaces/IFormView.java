@@ -9,7 +9,7 @@ public interface IFormView  {
     JButton btnSave = new JButton("Guardar");
     JButton btnCancel = new JButton("Cancelar");
 
-    void initForm();
+    void initForm(int height);
 
     JButton getBtnSave();
     JButton getBtnCancel();

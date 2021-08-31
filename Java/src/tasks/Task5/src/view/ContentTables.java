@@ -1,17 +1,9 @@
 package view;
 
-import DAO.EmployeesDAO;
-import DAO.ProductsDAO;
-import DAO.StocksDAO;
-import DAO.StoresDAO;
 import controller.EmployeesController;
 import controller.ProductsController;
 import controller.StocksController;
 import controller.StoresController;
-import interfaces.IEmployeesDAO;
-import interfaces.IProductsDAO;
-import interfaces.IStocksDAO;
-import interfaces.IStoresDAO;
 import model.Employee;
 import model.Product;
 import model.Stock;
@@ -23,13 +15,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 public class ContentTables {
-    private IEmployeesDAO employeesDAO;
     private EmployeesController employeesController;
-    private IProductsDAO productsDAO;
     private ProductsController productsController;
-    private IStocksDAO stocksDAO;
     private StocksController stocksController;
-    private IStoresDAO storesDAO;
     private StoresController storesController;
 
     private JTable employeesTable = new JTable() {
@@ -54,20 +42,16 @@ public class ContentTables {
     };
 
     public ContentTables() {
-        employeesDAO = new EmployeesDAO();
-        employeesController = new EmployeesController(employeesDAO);
+        employeesController = new EmployeesController();
         loadEmployees();
 
-        productsDAO = new ProductsDAO();
-        productsController = new ProductsController(productsDAO);
+        productsController = new ProductsController();
         loadProducts();
 
-        stocksDAO = new StocksDAO();
-        stocksController = new StocksController(stocksDAO);
+        stocksController = new StocksController();
         loadStocks();
 
-        storesDAO = new StoresDAO();
-        storesController = new StoresController(storesDAO);
+        storesController = new StoresController();
         loadStores();
     }
 
@@ -113,25 +97,29 @@ public class ContentTables {
 
     public Employee getSelectedEmployee () {
         int row = employeesTable.getSelectedRow();
+        if (row == -1) return null;
         int id = Integer.parseInt(employeesTable.getModel().getValueAt(row, 0).toString());
-        return employeesDAO.getEmployeeById(id);
+        return employeesController.getEmployeeById(id);
     }
 
     public Product getSelectedProduct () {
         int row = productsTable.getSelectedRow();
+        if (row == -1) return null;
         int id = Integer.parseInt(productsTable.getModel().getValueAt(row, 0).toString());
-        return productsDAO.getProductById(id);
+        return productsController.getProductById(id);
     }
 
     public Stock getSelectedStock () {
         int row = stocksTable.getSelectedRow();
+        if (row == -1) return null;
         int id = Integer.parseInt(stocksTable.getModel().getValueAt(row, 0).toString());
-        return stocksDAO.getStockById(id);
+        return stocksController.getStockById(id);
     }
 
     public Store getSelectedStore () {
         int row = storesTable.getSelectedRow();
+        if (row == -1) return null;
         int id = Integer.parseInt(storesTable.getModel().getValueAt(row, 0).toString());
-        return storesDAO.getStoreById(id);
+        return storesController.getStoreById(id);
     }
 }

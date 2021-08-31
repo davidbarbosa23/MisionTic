@@ -22,7 +22,6 @@ public class Main extends JFrame {
         }
 
         // Add content to the window.
-
         ContentTables contentTables = new ContentTables();
         ActionButtons actionButtons = new ActionButtons(contentTables);
         add(new Tabs(actionButtons, contentTables), BorderLayout.CENTER);

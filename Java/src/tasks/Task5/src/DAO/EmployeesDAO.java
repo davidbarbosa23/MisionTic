@@ -122,4 +122,19 @@ public class EmployeesDAO implements IEmployeesDAO {
             ex.printStackTrace();
         }
     }
+
+    public void deleteEmployeeByStoreId(int id) {
+        if (conn == null)
+            conn = DBConnection.getConnection();
+
+        String query = "DELETE FROM `" + Employee.TableName + "` WHERE `idBodega` = ?;";
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

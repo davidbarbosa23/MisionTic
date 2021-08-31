@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.StoresDAO;
 import interfaces.IStoresDAO;
 import model.Store;
 
@@ -10,8 +11,8 @@ public class StoresController {
     IStoresDAO storesDAO;
     private static final String[] columns = new String[]{"ID", "Nombre", "Dirección"};
 
-    public StoresController(IStoresDAO storesDAO) {
-        this.storesDAO = storesDAO;
+    public StoresController() {
+        this.storesDAO = new StoresDAO();
     }
 
     public DefaultTableModel get() {
@@ -22,5 +23,9 @@ public class StoresController {
             model.addRow(store.toArray());
 
         return model;
+    }
+
+    public Store getStoreById(int id) {
+        return storesDAO.getStoreById(id);
     }
 }

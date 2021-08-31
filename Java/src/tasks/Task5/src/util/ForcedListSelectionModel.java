@@ -1,3 +1,7 @@
+/*
+ * Explanation here: https://stackoverflow.com/a/18311712
+ */
+
 package util;
 
 import javax.swing.DefaultListSelectionModel;

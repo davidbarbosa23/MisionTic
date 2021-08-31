@@ -21,7 +21,7 @@ public class StoresDAO implements IStoresDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT `idBodega`, `nombre`, `direccion` FROM `" + Store.TableName + "`;";
+        String query = "SELECT `idBodega`, `nombre`, `direccion` FROM `" + Store.TableName + "` ORDER BY `idBodega`;";
 
         try {
             Statement statement = conn.createStatement();

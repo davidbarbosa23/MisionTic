@@ -31,10 +31,6 @@ public class Employee {
         this.idBodega = idStore;
     }
 
-    public String getStoreName() {
-        return nombreBodega;
-    }
-
     public int getIdEmployee() {
         return idempleado;
     }

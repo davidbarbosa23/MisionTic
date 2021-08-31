@@ -124,9 +124,8 @@ public class FormsActionsController implements ActionListener {
             }
         }
 
+        // Close frame after perform action
         if (form instanceof JFrame && (actionEvent.getSource() == form.getBtnCancel() || actionEvent.getSource() == form.getBtnSave())) {
-            ((JFrame) form).setVisible(false);
-            ((JFrame) form).dispatchEvent(new WindowEvent(((JFrame) form), WindowEvent.WINDOW_CLOSING));
             ((JFrame) form).dispose();
             form = null;
         }

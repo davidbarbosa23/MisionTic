@@ -21,7 +21,7 @@ public class ProductsDAO implements IProductsDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT `idproducto`, `nombre`, `precio` FROM `" + Product.TableName + "`;";
+        String query = "SELECT `idproducto`, `nombre`, `precio` FROM `" + Product.TableName + "` ORDER BY `idproducto`;";
 
         try {
             Statement statement = conn.createStatement();

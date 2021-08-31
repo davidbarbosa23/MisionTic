@@ -128,8 +128,6 @@ public class TabsActionsController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        System.out.println("Action Tab: " + actionButtons.getSelectedTab() + " - Command: " + actionEvent.getActionCommand());
-
         // Dispose frames except Main, before launch other frame
         for (Frame fr : Frame.getFrames()) {
             String specificFrameName = fr.getClass().getName();
@@ -137,6 +135,7 @@ public class TabsActionsController implements ActionListener {
             else fr.dispose();
         }
 
+        // Select action according to selected tab
         switch (actionButtons.getSelectedTab()) {
             case 0:
                 stockTab(actionEvent);

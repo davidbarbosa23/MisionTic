@@ -32,10 +32,9 @@ public class Tabs extends JPanel {
         tabbedPane.addTab("Bodegas", panel4);
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 
-        tabbedPane.addChangeListener(e -> {
-            System.out.println("Tab: " + tabbedPane.getSelectedIndex());
-            actionButtons.setSelectedTab(tabbedPane.getSelectedIndex());
-        });
+        tabbedPane.addChangeListener(e ->
+                actionButtons.setSelectedTab(tabbedPane.getSelectedIndex())
+        );
 
         add(tabbedPane);
 

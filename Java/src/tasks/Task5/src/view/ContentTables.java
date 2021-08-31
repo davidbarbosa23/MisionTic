@@ -10,7 +10,6 @@ import model.Stock;
 import model.Store;
 import util.ForcedListSelectionModel;
 
-import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
@@ -58,25 +57,21 @@ public class ContentTables {
     public void loadEmployees() {
         employeesTable.setSelectionModel(new ForcedListSelectionModel());
         employeesTable.setModel(employeesController.get());
-        employeesTable.getTableHeader().setFont(new Font("SansSerif", Font.ITALIC, 14));
     }
 
     public void loadProducts() {
         productsTable.setSelectionModel(new ForcedListSelectionModel());
         productsTable.setModel(productsController.get());
-        productsTable.getTableHeader().setFont(new Font("SansSerif", Font.ITALIC, 14));
     }
 
     public void loadStocks() {
         stocksTable.setSelectionModel(new ForcedListSelectionModel());
         stocksTable.setModel(stocksController.get());
-        stocksTable.getTableHeader().setFont(new Font("SansSerif", Font.ITALIC, 14));
     }
 
     public void loadStores() {
         storesTable.setSelectionModel(new ForcedListSelectionModel());
         storesTable.setModel(storesController.get());
-        storesTable.getTableHeader().setFont(new Font("SansSerif", Font.ITALIC, 14));
     }
 
     public JScrollPane getEmployeesTable() {

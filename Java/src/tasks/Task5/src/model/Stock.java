@@ -37,20 +37,12 @@ public class Stock {
         this.idBodega = idStore;
     }
 
-    public String getStoreName() {
-        return nombreBodega;
-    }
-
     public int getIdProduct() {
         return idproducto;
     }
 
     public void setIdProduct(int idProduct) {
         this.idproducto = idProduct;
-    }
-
-    public String getProductName() {
-        return nombreProducto;
     }
 
     public int getQuantity() {

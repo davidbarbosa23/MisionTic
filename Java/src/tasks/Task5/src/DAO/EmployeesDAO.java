@@ -22,7 +22,7 @@ public class EmployeesDAO implements IEmployeesDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` FROM `" + Employee.TableName + "` E LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.idBodega;";
+        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` FROM `" + Employee.TableName + "` E LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.`idBodega` ORDER BY E.`idempleado`;";
 
         try {
             Statement statement = conn.createStatement();
@@ -51,7 +51,7 @@ public class EmployeesDAO implements IEmployeesDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` FROM `" + Employee.TableName + "` E  LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.idBodega WHERE `idempleado` = " + id + ";";
+        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` FROM `" + Employee.TableName + "` E  LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.`idBodega` WHERE `idempleado` = " + id + ";";
 
         try {
             Statement statement = conn.createStatement();

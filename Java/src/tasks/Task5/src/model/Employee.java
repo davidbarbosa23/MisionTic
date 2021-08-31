@@ -1,13 +1,23 @@
 package model;
 
 public class Employee {
-    private int     idBodega;
-    private int     idempleado;
-    private String  nombre;
-    private int     edad;
+    private int idBodega;
+    private String nombreBodega;
+    private int idempleado;
+    private String nombre;
+    private int edad;
 
-    public Employee (int idStore, int idEmployee, String name, int age) {
+    public static String TableName = "empleado";
+
+    public Employee(int idStore, String name, int age) {
         this.idBodega = idStore;
+        this.nombre = name;
+        this.edad = age;
+    }
+
+    public Employee(int idStore, String storeName, int idEmployee, String name, int age) {
+        this.idBodega = idStore;
+        this.nombreBodega = storeName;
         this.idempleado = idEmployee;
         this.nombre = name;
         this.edad = age;
@@ -25,10 +35,6 @@ public class Employee {
         return idempleado;
     }
 
-    public void setIdEmployee(int idEmployee) {
-        this.idempleado = idEmployee;
-    }
-
     public String getName() {
         return nombre;
     }
@@ -43,5 +49,9 @@ public class Employee {
 
     public void setAge(int age) {
         this.edad = age;
+    }
+
+    public Object[] toArray() {
+        return new Object[]{idempleado, nombre, edad, nombreBodega};
     }
 }

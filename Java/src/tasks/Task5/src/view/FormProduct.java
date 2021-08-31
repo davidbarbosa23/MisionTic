@@ -1,54 +1,83 @@
 package view;
 
-import DAO.ProductsDAO;
-import interfaces.IProductsDAO;
+import interfaces.IFormView;
 import model.Product;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class FormProduct extends JFrame implements ActionListener {
+public class FormProduct extends JFrame implements IFormView {
+    private ContentTables contentTables;
+    private String cmd;
+    private Product product;
+
     private JTextField productTxt;
     private JTextField productPriceTxt;
-    private JButton btnSaveProduct;
 
-    public FormProduct() {
+    public FormProduct(ContentTables contentTables, String cmd) {
+        this.cmd = cmd;
+        this.contentTables = contentTables;
         initForm();
     }
 
     public void initForm() {
-        setTitle("Agregar Producto");
+        formsActionsController.setForm(this);
+        formsActionsController.setContentTables(contentTables);
 
         JPanel panel = new JPanel(new GridLayout(2, 2));
         panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JLabel productLbl = new JLabel("Nombre");
-        panel.add(productLbl);
-        JPanel namePanel = new JPanel();
-        namePanel.setLayout(new FlowLayout());
         this.productTxt = new JTextField();
         this.productTxt.setPreferredSize(new Dimension(150, 20));
         this.productTxt.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        namePanel.add(this.productTxt);
-        panel.add(namePanel);
 
         JLabel productPriceLbl = new JLabel("Precio");
-        panel.add(productPriceLbl);
-        JPanel pricePanel = new JPanel();
-        pricePanel.setLayout(new FlowLayout());
         this.productPriceTxt = new JTextField();
         this.productPriceTxt.setPreferredSize(new Dimension(150, 20));
         this.productPriceTxt.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        // Set title and default values
+        if (cmd.equals("update")) {
+            setTitle("Actualizar Producto");
+            product = contentTables.getSelectedProduct();
+            this.productTxt.setText(product.getName());
+            this.productPriceTxt.setText(String.valueOf(product.getPrice()));
+        } else {
+            setTitle("Agregar Producto");
+            this.productTxt.setText("");
+            this.productPriceTxt.setText("");
+        }
+
+        JPanel namePanel = new JPanel();
+        namePanel.setLayout(new FlowLayout());
+        namePanel.add(this.productTxt);
+
+        JPanel pricePanel = new JPanel();
+        pricePanel.setLayout(new FlowLayout());
         pricePanel.add(this.productPriceTxt);
+
+        panel.add(productLbl);
+        panel.add(namePanel);
+        panel.add(productPriceLbl);
         panel.add(pricePanel);
 
         add(panel, BorderLayout.CENTER);
 
-        this.btnSaveProduct = new JButton("Guardar");
-        this.btnSaveProduct.addActionListener(this);
-        add(this.btnSaveProduct, BorderLayout.SOUTH);
+        JPanel buttonsPanel = new JPanel();
+        this.btnSave.addActionListener(formsActionsController);
+        buttonsPanel.add(this.btnSave);
+        this.btnCancel.addActionListener(formsActionsController);
+        buttonsPanel.add(this.btnCancel);
+        add(buttonsPanel, BorderLayout.SOUTH);
 
         // Create and set up the window.
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,17 +87,27 @@ public class FormProduct extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == this.btnSaveProduct) {
-            String name = this.productTxt.getText();
-            double price = Double.parseDouble(this.productPriceTxt.getText());
-            Product product = new Product(name, price);
+    public JTextField getProductTxt() {
+        return productTxt;
+    }
 
-            IProductsDAO productsDAO = new ProductsDAO();
-            productsDAO.createProduct(product);
+    public JTextField getProductPriceTxt() {
+        return productPriceTxt;
+    }
 
-            this.setVisible(false);
-        }
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public String getCmd() {
+        return cmd;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 }

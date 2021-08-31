@@ -35,16 +35,8 @@ public class Employee {
         return nombreBodega;
     }
 
-    public void setStoreName(String storeName) {
-        this.nombreBodega = storeName;
-    }
-
     public int getIdEmployee() {
         return idempleado;
-    }
-
-    public void setIdEmployee(int idEmployee) {
-        this.idempleado = idEmployee;
     }
 
     public String getName() {

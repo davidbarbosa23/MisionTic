@@ -1,62 +1,94 @@
 package view;
 
-import DAO.StocksDAO;
-import controller.ViewController;
-import interfaces.IStocksDAO;
+import controller.ListsController;
+import interfaces.IFormView;
 import model.Product;
 import model.Stock;
 import model.Store;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class FormStock extends JFrame implements ActionListener {
+public class FormStock extends JFrame implements IFormView {
+    private ContentTables contentTables;
+    private String cmd;
+    private Stock stock;
+
     private JComboBox<Store> storeCbx;
     private JComboBox<Product> productCbx;
     private JTextField quantityTxt;
-    private JButton btnSaveStock;
 
-    public FormStock() {
+    public FormStock(ContentTables contentTables, String cmd) {
+        this.cmd = cmd;
+        this.contentTables = contentTables;
         initForm();
     }
 
     public void initForm() {
-        setTitle("Agregar Almacén");
+        formsActionsController.setForm(this);
+        formsActionsController.setContentTables(contentTables);
 
         JPanel panel = new JPanel(new GridLayout(3, 2));
         panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         JLabel storeLbl = new JLabel("Seleccione bodega");
-        panel.add(storeLbl);
-        this.storeCbx = new JComboBox();
-        this.storeCbx.setModel(new DefaultComboBoxModel<>(ViewController.getStores().toArray(new Store[ViewController.getStores().size()])));
+        this.storeCbx = new JComboBox<>();
+        this.storeCbx.setModel(new DefaultComboBoxModel<>(ListsController.getStores().toArray(new Store[ListsController.getStores().size()])));
         this.storeCbx.setSelectedIndex(0);
-        panel.add(this.storeCbx);
 
         JLabel productLbl = new JLabel("Seleccione producto");
-        panel.add(productLbl);
-        this.productCbx = new JComboBox();
-        this.productCbx.setModel(new DefaultComboBoxModel<>(ViewController.getProducts().toArray(new Product[ViewController.getProducts().size()])));
+        this.productCbx = new JComboBox<>();
+        this.productCbx.setModel(new DefaultComboBoxModel<>(ListsController.getProducts().toArray(new Product[ListsController.getProducts().size()])));
         this.productCbx.setSelectedIndex(0);
-        panel.add(this.productCbx);
 
         JLabel quantityLbl = new JLabel("Cantidad");
-        panel.add(quantityLbl);
-        JPanel quantityPanel = new JPanel();
-        quantityPanel.setLayout(new FlowLayout());
         this.quantityTxt = new JTextField();
         this.quantityTxt.setPreferredSize(new Dimension(150, 20));
         this.quantityTxt.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        // Set title and default values
+        if (cmd.equals("update")) {
+            setTitle("Actualizar Almacén");
+            stock = contentTables.getSelectedStock();
+            this.storeCbx.getModel().setSelectedItem(stock.getStoreName()); // ToDo: Get Store Object
+            this.productCbx.getModel().setSelectedItem(stock.getProductName()); // ToDo: Get Product Object
+            this.quantityTxt.setText(String.valueOf(stock.getQuantity()));
+        } else {
+            setTitle("Agregar Almacén");
+            this.storeCbx.setSelectedItem(null);
+            this.productCbx.setSelectedItem(null);
+            this.quantityTxt.setText("");
+        }
+
+        JPanel quantityPanel = new JPanel();
+        quantityPanel.setLayout(new FlowLayout());
         quantityPanel.add(this.quantityTxt);
+
+        panel.add(storeLbl);
+        panel.add(this.storeCbx);
+        panel.add(productLbl);
+        panel.add(this.productCbx);
+        panel.add(quantityLbl);
         panel.add(quantityPanel);
 
         add(panel, BorderLayout.CENTER);
 
-        this.btnSaveStock = new JButton("Guardar");
-        this.btnSaveStock.addActionListener(this);
-        add(this.btnSaveStock, BorderLayout.SOUTH);
+        JPanel buttonsPanel = new JPanel();
+        this.btnSave.addActionListener(formsActionsController);
+        buttonsPanel.add(this.btnSave);
+        this.btnCancel.addActionListener(formsActionsController);
+        buttonsPanel.add(this.btnCancel);
+        add(buttonsPanel, BorderLayout.SOUTH);
 
         // Create and set up the window.
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -66,18 +98,31 @@ public class FormStock extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == this.btnSaveStock) {
-            int idStore = ((Store) this.storeCbx.getSelectedItem()).getIdStore();
-            int idProduct = ((Product) this.productCbx.getSelectedItem()).getIdProduct();
-            int price = Integer.parseInt(this.quantityTxt.getText());
-            Stock stock = new Stock(idStore, idProduct, price);
+    public JComboBox<Store> getStoreCbx() {
+        return storeCbx;
+    }
 
-            IStocksDAO stocksDAO = new StocksDAO();
-            stocksDAO.createStock(stock);
+    public JComboBox<Product> getProductCbx() {
+        return productCbx;
+    }
 
-            this.setVisible(false);
-        }
+    public JTextField getQuantityTxt() {
+        return quantityTxt;
+    }
+
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public String getCmd() {
+        return cmd;
+    }
+
+    public Stock getStock() {
+        return stock;
     }
 }

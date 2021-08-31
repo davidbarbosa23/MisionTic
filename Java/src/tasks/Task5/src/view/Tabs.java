@@ -1,8 +1,3 @@
-/*
- * Example taken from:
- * https://docs.oracle.com/javase/tutorial/uiswing/examples/components/TabbedPaneDemoProject/src/components/TabbedPaneDemo.java
- */
-
 package view;
 
 import javax.swing.JTabbedPane;
@@ -14,26 +9,26 @@ import java.awt.event.KeyEvent;
 
 public class Tabs extends JPanel {
 
-    public Tabs(ActionButtons actionButtons) {
+    public Tabs(ActionButtons actionButtons, ContentTables contentTables) {
         super(new GridLayout(1, 1));
 
         setPreferredSize(new Dimension(640, 300));
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JComponent panel1 = ContentTables.getStocksTable();
+        JComponent panel1 = contentTables.getStocksTable();
         tabbedPane.addTab("Almacén", panel1);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 
-        JComponent panel2 = ContentTables.getProductsTable();
+        JComponent panel2 = contentTables.getProductsTable();
         tabbedPane.addTab("Productos", panel2);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 
-        JComponent panel3 = ContentTables.getEmployeesTable();
+        JComponent panel3 = contentTables.getEmployeesTable();
         tabbedPane.addTab("Empleados", panel3);
         tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
 
-        JComponent panel4 = ContentTables.getStoresTable();
+        JComponent panel4 = contentTables.getStoresTable();
         tabbedPane.addTab("Bodegas", panel4);
         tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 
@@ -42,10 +37,9 @@ public class Tabs extends JPanel {
             actionButtons.setSelectedTab(tabbedPane.getSelectedIndex());
         });
 
-        //Add the tabbed pane to this panel.
         add(tabbedPane);
 
-        //The following line enables to use scrolling tabs.
+        // Enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
 }

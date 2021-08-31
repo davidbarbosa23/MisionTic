@@ -41,10 +41,6 @@ public class Stock {
         return nombreBodega;
     }
 
-    public void setStoreName(String storeName) {
-        this.nombreBodega = storeName;
-    }
-
     public int getIdProduct() {
         return idproducto;
     }
@@ -57,10 +53,6 @@ public class Stock {
         return nombreProducto;
     }
 
-    public void setProductName(String productName) {
-        this.nombreProducto = productName;
-    }
-
     public int getQuantity() {
         return cantidad;
     }
@@ -70,6 +62,6 @@ public class Stock {
     }
 
     public Object[] toArray() {
-        return new Object[]{nombreBodega, nombreProducto, cantidad};
+        return new Object[]{idAlmacena, nombreBodega, nombreProducto, cantidad};
     }
 }

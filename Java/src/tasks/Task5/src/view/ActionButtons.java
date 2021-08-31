@@ -1,6 +1,6 @@
 package view;
 
-import controller.ActionsController;
+import controller.TabsActionsController;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -9,23 +9,23 @@ import java.awt.GridLayout;
 public class ActionButtons extends JPanel {
     private int selectedTab;
 
-    public ActionButtons() {
+    public ActionButtons(ContentTables contentTables) {
         super(new GridLayout(1, 3));
 
-        ActionsController actionsController = new ActionsController(this);
+        TabsActionsController tabsActionsController = new TabsActionsController(this, contentTables);
 
         JButton btnCreate = new JButton("Crear");
-        btnCreate.addActionListener(actionsController);
+        btnCreate.addActionListener(tabsActionsController);
         btnCreate.setActionCommand("create");
         add(btnCreate);
 
         JButton btnUpdate = new JButton("Actualizar");
-        btnUpdate.addActionListener(actionsController);
+        btnUpdate.addActionListener(tabsActionsController);
         btnUpdate.setActionCommand("update");
         add(btnUpdate);
 
         JButton btnDelete = new JButton("Borrar");
-        btnDelete.addActionListener(actionsController);
+        btnDelete.addActionListener(tabsActionsController);
         btnDelete.setActionCommand("delete");
         add(btnDelete);
     }

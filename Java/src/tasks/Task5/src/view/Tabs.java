@@ -3,6 +3,7 @@ package view;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -35,6 +36,9 @@ public class Tabs extends JPanel {
         tabbedPane.addChangeListener(e ->
                 actionButtons.setSelectedTab(tabbedPane.getSelectedIndex())
         );
+
+        // Tabs font color
+        tabbedPane.setForeground(Color.black);
 
         add(tabbedPane);
 

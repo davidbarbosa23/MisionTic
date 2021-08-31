@@ -40,7 +40,8 @@ public class TabsActionsController implements ActionListener {
                 mainFrame,
                 "¿Seguro desea eliminar este registro de " + title + "? " + desc,
                 "Alerta de borrado",
-                JOptionPane.OK_CANCEL_OPTION
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.WARNING_MESSAGE
         );
     }
 

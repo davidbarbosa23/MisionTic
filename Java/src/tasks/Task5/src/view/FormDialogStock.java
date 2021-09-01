@@ -5,28 +5,28 @@ import model.Product;
 import model.Stock;
 import model.Store;
 
-import java.awt.BorderLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FormStock extends Form {
+public class FormDialogStock extends FormDialog {
     private Stock stock;
 
     private JComboBox<Store> storeCbx;
     private JComboBox<Product> productCbx;
     private JTextField quantityTxt;
 
-    public FormStock(ContentTables contentTables, String cmd) {
-        super(contentTables, cmd);
+    public FormDialogStock(ContentTables contentTables, String cmd, Frame mainFrame) {
+        super(contentTables, cmd, mainFrame);
     }
 
     @Override
     public void setForm() {
+        setLayout(new GridLayout(3, 2));
+
         JLabel storeLbl = new JLabel("Seleccione bodega");
         this.storeCbx = new JComboBox<>();
         this.storeCbx.setModel(new DefaultComboBoxModel<>(ListsController.getStores().toArray(new Store[ListsController.getStores().size()])));
@@ -52,18 +52,14 @@ public class FormStock extends Form {
             this.quantityTxt.setText("");
         }
 
-        JPanel panel = new JPanel(new GridLayout(3, 2));
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        panel.add(storeLbl);
-        panel.add(this.storeCbx);
-        panel.add(productLbl);
-        panel.add(this.productCbx);
-        panel.add(quantityLbl);
-        panel.add(setTxtPanel(this.quantityTxt));
+        add(storeLbl);
+        add(this.storeCbx);
+        add(productLbl);
+        add(this.productCbx);
+        add(quantityLbl);
+        add(setTxtPanel(this.quantityTxt));
 
-        add(panel, BorderLayout.CENTER);
-
-        initForm(180);
+        initForm();
     }
 
     public JComboBox<Store> getStoreCbx() {

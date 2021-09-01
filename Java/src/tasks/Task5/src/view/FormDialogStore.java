@@ -2,25 +2,25 @@ package view;
 
 import model.Store;
 
-import java.awt.BorderLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FormStore extends Form {
+public class FormDialogStore extends FormDialog {
     private Store store;
 
     private JTextField nameTxt;
     private JTextField addressTxt;
 
-    public FormStore(ContentTables contentTables, String cmd) {
-        super(contentTables, cmd);
+    public FormDialogStore(ContentTables contentTables, String cmd, Frame mainFrame) {
+        super(contentTables, cmd, mainFrame);
     }
 
     @Override
     public void setForm() {
+        setLayout(new GridLayout(2, 2));
+
         JLabel nameLbl = new JLabel("Nombre");
         this.nameTxt = new JTextField();
 
@@ -39,16 +39,12 @@ public class FormStore extends Form {
             this.addressTxt.setText("");
         }
 
-        JPanel panel = new JPanel(new GridLayout(2, 2));
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        panel.add(nameLbl);
-        panel.add(setTxtPanel(this.nameTxt));
-        panel.add(addressLbl);
-        panel.add(setTxtPanel(this.addressTxt));
+        add(nameLbl);
+        add(setTxtPanel(this.nameTxt));
+        add(addressLbl);
+        add(setTxtPanel(this.addressTxt));
 
-        add(panel, BorderLayout.CENTER);
-
-        initForm(150);
+        initForm();
     }
 
     public JTextField getNameTxt() {

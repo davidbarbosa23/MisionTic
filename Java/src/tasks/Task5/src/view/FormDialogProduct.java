@@ -2,25 +2,25 @@ package view;
 
 import model.Product;
 
-import java.awt.BorderLayout;
+import java.awt.Frame;
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FormProduct extends Form {
+public class FormDialogProduct extends FormDialog {
     private Product product;
 
     private JTextField productTxt;
     private JTextField productPriceTxt;
 
-    public FormProduct(ContentTables contentTables, String cmd) {
-        super(contentTables, cmd);
+    public FormDialogProduct(ContentTables contentTables, String cmd, Frame mainFrame) {
+        super(contentTables, cmd, mainFrame);
     }
 
     @Override
     public void setForm() {
+        setLayout(new GridLayout(2, 2));
+
         JLabel productLbl = new JLabel("Nombre");
         this.productTxt = new JTextField();
 
@@ -39,16 +39,12 @@ public class FormProduct extends Form {
             this.productPriceTxt.setText("");
         }
 
-        JPanel panel = new JPanel(new GridLayout(2, 2));
-        panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        panel.add(productLbl);
-        panel.add(setTxtPanel(this.productTxt));
-        panel.add(productPriceLbl);
-        panel.add(setTxtPanel(this.productPriceTxt));
+        add(productLbl);
+        add(setTxtPanel(this.productTxt));
+        add(productPriceLbl);
+        add(setTxtPanel(this.productPriceTxt));
 
-        add(panel, BorderLayout.CENTER);
-
-        initForm(150);
+        initForm();
     }
 
     public JTextField getProductTxt() {

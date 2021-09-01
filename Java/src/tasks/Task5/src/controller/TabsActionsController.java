@@ -18,10 +18,10 @@ import model.Stock;
 import model.Store;
 import view.ActionButtons;
 import view.ContentTables;
-import view.FormEmployee;
-import view.FormProduct;
-import view.FormStock;
-import view.FormStore;
+import view.FormDialogEmployee;
+import view.FormDialogProduct;
+import view.FormDialogStock;
+import view.FormDialogStore;
 
 import javax.swing.JOptionPane;
 
@@ -62,7 +62,7 @@ public class TabsActionsController implements ActionListener {
                 stocksDAO.deleteStockById(stock.getIdStock());
                 contentTables.loadStocks();
             }
-        } else new FormStock(contentTables, actionEvent.getActionCommand()).setVisible(true);
+        } else new FormDialogStock(contentTables, actionEvent.getActionCommand(), mainFrame);
     }
 
     private void productTab(ActionEvent actionEvent) {
@@ -83,7 +83,7 @@ public class TabsActionsController implements ActionListener {
                 productsDAO.deleteProductById(product.getIdProduct());
                 contentTables.loadProducts();
             }
-        } else new FormProduct(contentTables, actionEvent.getActionCommand()).setVisible(true);
+        } else new FormDialogProduct(contentTables, actionEvent.getActionCommand(), mainFrame);
     }
 
     private void employeeTab(ActionEvent actionEvent) {
@@ -99,7 +99,7 @@ public class TabsActionsController implements ActionListener {
                 employeesDAO.deleteEmployeeById(employee.getIdEmployee());
                 contentTables.loadEmployees();
             }
-        } else new FormEmployee(contentTables, actionEvent.getActionCommand()).setVisible(true);
+        } else new FormDialogEmployee(contentTables, actionEvent.getActionCommand(), mainFrame);
     }
 
     private void storeTab(ActionEvent actionEvent) {
@@ -124,7 +124,7 @@ public class TabsActionsController implements ActionListener {
                 storesDAO.deleteStoreById(store.getIdStore());
                 contentTables.loadStores();
             }
-        } else new FormStore(contentTables, actionEvent.getActionCommand()).setVisible(true);
+        } else new FormDialogStore(contentTables, actionEvent.getActionCommand(), mainFrame);
     }
 
     @Override

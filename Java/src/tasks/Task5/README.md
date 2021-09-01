@@ -1,5 +1,8 @@
 # Reto 5: Bodegas "todo lo bueno"
 
+### Consideraciones
+Antes de ejecutar el programa es necesario modificar los accesos a Base de Datos en el archivo `src/util/DBProperties.java`
+
 ### Interfaz
 
 https://user-images.githubusercontent.com/25970849/131716082-5f3aa11f-c8d4-4b50-8881-9c34bf8f2bc4.mp4

@@ -1,5 +1,7 @@
 package view;
 
+import controller.FormsDialogsController;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -9,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class FormDialog extends JPanel implements IFormDialog {
+    private FormsDialogsController formController = new FormsDialogsController();
     private ContentTables contentTables;
     private String cmd;
     private String title = "";

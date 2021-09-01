@@ -20,7 +20,9 @@ public class ProductsDAO implements IProductsDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT `idproducto`, `nombre`, `precio` FROM `" + Product.TableName + "` ORDER BY `idproducto`;";
+        String query = "SELECT `idproducto`, `nombre`, `precio` "
+                + "FROM `" + Product.TableName + "` "
+                + "ORDER BY `idproducto`;";
 
         try {
             Statement statement = conn.createStatement();
@@ -47,7 +49,9 @@ public class ProductsDAO implements IProductsDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT `idproducto`, `nombre`, `precio` FROM `" + Product.TableName + "` WHERE `idproducto` = " + id + ";";
+        String query = "SELECT `idproducto`, `nombre`, `precio` "
+                + "FROM `" + Product.TableName + "` "
+                + "WHERE `idproducto` = " + id + ";";
 
         try {
             Statement statement = conn.createStatement();
@@ -87,7 +91,9 @@ public class ProductsDAO implements IProductsDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "UPDATE `" + Product.TableName + "` SET `nombre` = ?, `precio` = ? WHERE `idproducto` = ?;";
+        String query = "UPDATE `" + Product.TableName + "` "
+                + "SET `nombre` = ?, `precio` = ? "
+                + "WHERE `idproducto` = ?;";
 
         try {
             PreparedStatement statement = conn.prepareStatement(query);

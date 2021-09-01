@@ -35,6 +35,34 @@ public class TabsActionsController implements ActionListener {
         this.contentTables = contentTables;
     }
 
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        // Dispose frames except Main, before launch other frame
+        for (Frame fr : Frame.getFrames()) {
+            String specificFrameName = fr.getClass().getName();
+            if (specificFrameName.equals("view.Main")) mainFrame = fr;
+            else fr.dispose();
+        }
+
+        // Select action according to selected tab
+        switch (actionButtons.getSelectedTab()) {
+            case 0:
+                stockTab(actionEvent);
+                break;
+            case 1:
+                productTab(actionEvent);
+                break;
+            case 2:
+                employeeTab(actionEvent);
+                break;
+            case 3:
+                storeTab(actionEvent);
+                break;
+            default:
+                return;
+        }
+    }
+
     private int deleteDialog(String title, String desc) {
         return JOptionPane.showConfirmDialog(
                 mainFrame,
@@ -125,33 +153,5 @@ public class TabsActionsController implements ActionListener {
                 contentTables.loadStores();
             }
         } else new FormDialogStore(contentTables, actionEvent.getActionCommand(), mainFrame);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        // Dispose frames except Main, before launch other frame
-        for (Frame fr : Frame.getFrames()) {
-            String specificFrameName = fr.getClass().getName();
-            if (specificFrameName.equals("view.Main")) mainFrame = fr;
-            else fr.dispose();
-        }
-
-        // Select action according to selected tab
-        switch (actionButtons.getSelectedTab()) {
-            case 0:
-                stockTab(actionEvent);
-                break;
-            case 1:
-                productTab(actionEvent);
-                break;
-            case 2:
-                employeeTab(actionEvent);
-                break;
-            case 3:
-                storeTab(actionEvent);
-                break;
-            default:
-                return;
-        }
     }
 }

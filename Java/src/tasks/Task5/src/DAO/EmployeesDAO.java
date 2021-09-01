@@ -21,7 +21,10 @@ public class EmployeesDAO implements IEmployeesDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` FROM `" + Employee.TableName + "` E LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.`idBodega` ORDER BY E.`idempleado`;";
+        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` "
+                + "FROM `" + Employee.TableName + "` E "
+                + "LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.`idBodega` "
+                + "ORDER BY E.`idempleado`;";
 
         try {
             Statement statement = conn.createStatement();
@@ -50,7 +53,11 @@ public class EmployeesDAO implements IEmployeesDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` FROM `" + Employee.TableName + "` E  LEFT JOIN `" + Store.TableName + "` B ON B.`idBodega` = E.`idBodega` WHERE `idempleado` = " + id + ";";
+        String query = "SELECT B.`idBodega`, B.`nombre`, E.`idempleado`, E.`nombre`, E.`edad` "
+                + "FROM `" + Employee.TableName + "` E  "
+                + "LEFT JOIN `" + Store.TableName + "` B "
+                + "ON B.`idBodega` = E.`idBodega` "
+                + "WHERE `idempleado` = " + id + ";";
 
         try {
             Statement statement = conn.createStatement();
@@ -76,7 +83,8 @@ public class EmployeesDAO implements IEmployeesDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "INSERT INTO `" + Employee.TableName + "` (`idBodega`, `nombre`, `edad`)  VALUES (?, ?, ?);";
+        String query = "INSERT INTO `" + Employee.TableName + "` (`idBodega`, `nombre`, `edad`)  "
+                + "VALUES (?, ?, ?);";
 
         try {
             PreparedStatement statement = conn.prepareStatement(query);
@@ -93,7 +101,9 @@ public class EmployeesDAO implements IEmployeesDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "UPDATE `" + Employee.TableName + "` SET `idBodega` = ?, `nombre` = ?, `edad` = ? WHERE `idempleado` = ?;";
+        String query = "UPDATE `" + Employee.TableName + "` "
+                + "SET `idBodega` = ?, `nombre` = ?, `edad` = ? "
+                + "WHERE `idempleado` = ?;";
 
         try {
             PreparedStatement statement = conn.prepareStatement(query);

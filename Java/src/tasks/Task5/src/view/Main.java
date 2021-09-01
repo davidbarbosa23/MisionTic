@@ -23,5 +23,6 @@ public class Main extends JFrame {
         pack();
         setSize(640, 340);
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

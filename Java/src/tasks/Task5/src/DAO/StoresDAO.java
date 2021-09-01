@@ -20,7 +20,9 @@ public class StoresDAO implements IStoresDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT `idBodega`, `nombre`, `direccion` FROM `" + Store.TableName + "` ORDER BY `idBodega`;";
+        String query = "SELECT `idBodega`, `nombre`, `direccion` "
+                + "FROM `" + Store.TableName + "` "
+                + "ORDER BY `idBodega`;";
 
         try {
             Statement statement = conn.createStatement();
@@ -47,7 +49,9 @@ public class StoresDAO implements IStoresDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT `idBodega`, `nombre`, `direccion` FROM `" + Store.TableName + "` WHERE `idBodega` = " + id + ";";
+        String query = "SELECT `idBodega`, `nombre`, `direccion` "
+                + "FROM `" + Store.TableName + "` "
+                + "WHERE `idBodega` = " + id + ";";
 
         try {
             Statement statement = conn.createStatement();
@@ -87,7 +91,9 @@ public class StoresDAO implements IStoresDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "UPDATE `" + Store.TableName + "` SET `nombre` = ?, `direccion` = ? WHERE `idBodega` = ?;";
+        String query = "UPDATE `" + Store.TableName + "` "
+                + "SET `nombre` = ?, `direccion` = ? "
+                + "WHERE `idBodega` = ?;";
 
         try {
             PreparedStatement statement = conn.prepareStatement(query);

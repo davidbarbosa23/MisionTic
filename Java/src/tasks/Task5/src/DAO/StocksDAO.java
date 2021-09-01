@@ -22,7 +22,11 @@ public class StocksDAO implements IStocksDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT A.`idAlmacena`, B.`idBodega`, B.`nombre`, P.`idproducto`, P.`nombre`, A.`cantidad` FROM `" + Stock.TableName + "` A INNER JOIN `" + Store.TableName + "` B on A.`idBodega` = B.`idBodega` INNER JOIN `" + Product.TableName + "` P on A.`idproducto` = P.`idproducto`  ORDER BY A.`idAlmacena`;";
+        String query = "SELECT A.`idAlmacena`, B.`idBodega`, B.`nombre`, P.`idproducto`, P.`nombre`, A.`cantidad` "
+                + "FROM `" + Stock.TableName + "` A "
+                + "INNER JOIN `" + Store.TableName + "` B ON A.`idBodega` = B.`idBodega` "
+                + "INNER JOIN `" + Product.TableName + "` P ON A.`idproducto` = P.`idproducto` "
+                + "ORDER BY A.`idAlmacena`;";
 
         try {
             Statement statement = conn.createStatement();
@@ -52,7 +56,11 @@ public class StocksDAO implements IStocksDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "SELECT A.`idAlmacena`, B.`idBodega`, B.`nombre`, P.`idproducto`, P.`nombre`, A.`cantidad` FROM `" + Stock.TableName + "` A INNER JOIN `" + Store.TableName + "` B on A.`idBodega` = B.`idBodega` INNER JOIN `" + Product.TableName + "` P on A.`idproducto` = P.`idproducto` WHERE A.`idAlmacena` = " + id + ";";
+        String query = "SELECT A.`idAlmacena`, B.`idBodega`, B.`nombre`, P.`idproducto`, P.`nombre`, A.`cantidad` "
+                + "FROM `" + Stock.TableName + "` A "
+                + "INNER JOIN `" + Store.TableName + "` B ON A.`idBodega` = B.`idBodega` "
+                + "INNER JOIN `" + Product.TableName + "` P ON A.`idproducto` = P.`idproducto` "
+                + "WHERE A.`idAlmacena` = " + id + ";";
 
         try {
             Statement statement = conn.createStatement();
@@ -96,7 +104,9 @@ public class StocksDAO implements IStocksDAO {
         if (conn == null)
             conn = DBConnection.getConnection();
 
-        String query = "UPDATE `" + Stock.TableName + "` SET `idBodega` = ?, `idproducto` = ?, `cantidad` = ? WHERE `idAlmacena` = ?;";
+        String query = "UPDATE `" + Stock.TableName + "` "
+                + "SET `idBodega` = ?, `idproducto` = ?, `cantidad` = ? "
+                + "WHERE `idAlmacena` = ?;";
 
         try {
             PreparedStatement statement = conn.prepareStatement(query);

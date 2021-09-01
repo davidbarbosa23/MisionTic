@@ -1,6 +1,5 @@
 import view.Main;
 
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -16,7 +15,6 @@ public class Task5 {
         }
 
         // Run App
-        JFrame main = new Main();
-        main.setVisible(true);
+        new Main();
     }
 }

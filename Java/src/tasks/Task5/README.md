@@ -1,7 +1,8 @@
 # Reto 5: Bodegas "todo lo bueno"
 
 ### Consideraciones
-Antes de ejecutar el programa es necesario modificar los accesos a Base de Datos en el archivo `src/util/DBProperties.java`
+- Antes de ejecutar el programa es necesario modificar los accesos a Base de Datos en el archivo `src/util/DBProperties.java`
+- El SQL en el que se encuentra basado esta aplicación se encuentra en `sql/Task4.sql`. Generado a partir del Reto 4.
 
 ### Interfaz
 

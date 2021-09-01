@@ -7,7 +7,7 @@ import model.Store;
 
 import java.util.ArrayList;
 
-public class ListsController {
+public class FormsListsController {
 
     public static ArrayList<Product> getProducts() {
         ProductsDAO productsDAO = new ProductsDAO();

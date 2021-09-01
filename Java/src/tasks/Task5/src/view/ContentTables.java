@@ -1,9 +1,9 @@
 package view;
 
-import controller.EmployeesController;
-import controller.ProductsController;
-import controller.StocksController;
-import controller.StoresController;
+import controller.TableEmployeesController;
+import controller.TableProductsController;
+import controller.TableStocksController;
+import controller.TableStoresController;
 import model.Employee;
 import model.Product;
 import model.Stock;
@@ -14,10 +14,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class ContentTables {
-    private EmployeesController employeesController;
-    private ProductsController productsController;
-    private StocksController stocksController;
-    private StoresController storesController;
+    private TableEmployeesController tableEmployeesController;
+    private TableProductsController tableProductsController;
+    private TableStocksController tableStocksController;
+    private TableStoresController tableStoresController;
 
     private JTable employeesTable = new Table();
     private JTable productsTable = new Table();
@@ -25,33 +25,33 @@ public class ContentTables {
     private JTable storesTable = new Table();
 
     public ContentTables() {
-        employeesController = new EmployeesController();
+        tableEmployeesController = new TableEmployeesController();
         loadEmployees();
 
-        productsController = new ProductsController();
+        tableProductsController = new TableProductsController();
         loadProducts();
 
-        stocksController = new StocksController();
+        tableStocksController = new TableStocksController();
         loadStocks();
 
-        storesController = new StoresController();
+        tableStoresController = new TableStoresController();
         loadStores();
     }
 
     public void loadEmployees() {
-        employeesTable.setModel(employeesController.get());
+        employeesTable.setModel(tableEmployeesController.get());
     }
 
     public void loadProducts() {
-        productsTable.setModel(productsController.get());
+        productsTable.setModel(tableProductsController.get());
     }
 
     public void loadStocks() {
-        stocksTable.setModel(stocksController.get());
+        stocksTable.setModel(tableStocksController.get());
     }
 
     public void loadStores() {
-        storesTable.setModel(storesController.get());
+        storesTable.setModel(tableStoresController.get());
     }
 
 
@@ -76,27 +76,27 @@ public class ContentTables {
         int row = employeesTable.getSelectedRow();
         if (row == -1) return null;
         int id = Integer.parseInt(employeesTable.getModel().getValueAt(row, 0).toString());
-        return employeesController.getEmployeeById(id);
+        return tableEmployeesController.getEmployeeById(id);
     }
 
     public Product getSelectedProduct() {
         int row = productsTable.getSelectedRow();
         if (row == -1) return null;
         int id = Integer.parseInt(productsTable.getModel().getValueAt(row, 0).toString());
-        return productsController.getProductById(id);
+        return tableProductsController.getProductById(id);
     }
 
     public Stock getSelectedStock() {
         int row = stocksTable.getSelectedRow();
         if (row == -1) return null;
         int id = Integer.parseInt(stocksTable.getModel().getValueAt(row, 0).toString());
-        return stocksController.getStockById(id);
+        return tableStocksController.getStockById(id);
     }
 
     public Store getSelectedStore() {
         int row = storesTable.getSelectedRow();
         if (row == -1) return null;
         int id = Integer.parseInt(storesTable.getModel().getValueAt(row, 0).toString());
-        return storesController.getStoreById(id);
+        return tableStoresController.getStoreById(id);
     }
 }

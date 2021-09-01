@@ -7,11 +7,11 @@ import model.Stock;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class StocksController {
+public class TableStocksController {
     private IStocksDAO stocksDAO;
     private static final String[] columns = new String[]{"ID", "Bodega", "Producto", "Cantidad"};
 
-    public StocksController() {
+    public TableStocksController() {
         this.stocksDAO = new StocksDAO();
     }
 

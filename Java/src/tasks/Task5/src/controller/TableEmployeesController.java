@@ -7,11 +7,11 @@ import model.Employee;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class EmployeesController {
+public class TableEmployeesController {
     private IEmployeesDAO employeesDAO;
     private static final String[] columns = new String[]{"ID", "Nombre", "Edad", "Bodega"};
 
-    public EmployeesController() {
+    public TableEmployeesController() {
         this.employeesDAO = new EmployeesDAO();
     }
 

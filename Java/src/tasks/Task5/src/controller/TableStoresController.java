@@ -7,11 +7,11 @@ import model.Store;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class StoresController {
+public class TableStoresController {
     IStoresDAO storesDAO;
     private static final String[] columns = new String[]{"ID", "Nombre", "Dirección"};
 
-    public StoresController() {
+    public TableStoresController() {
         this.storesDAO = new StoresDAO();
     }
 

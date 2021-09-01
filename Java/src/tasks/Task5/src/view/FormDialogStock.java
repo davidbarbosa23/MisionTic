@@ -1,6 +1,6 @@
 package view;
 
-import controller.ListsController;
+import controller.FormsListsController;
 import model.Product;
 import model.Stock;
 import model.Store;
@@ -29,11 +29,11 @@ public class FormDialogStock extends FormDialog {
 
         JLabel storeLbl = new JLabel("Seleccione bodega");
         this.storeCbx = new JComboBox<>();
-        this.storeCbx.setModel(new DefaultComboBoxModel<>(ListsController.getStores().toArray(new Store[ListsController.getStores().size()])));
+        this.storeCbx.setModel(new DefaultComboBoxModel<>(FormsListsController.getStores().toArray(new Store[FormsListsController.getStores().size()])));
 
         JLabel productLbl = new JLabel("Seleccione producto");
         this.productCbx = new JComboBox<>();
-        this.productCbx.setModel(new DefaultComboBoxModel<>(ListsController.getProducts().toArray(new Product[ListsController.getProducts().size()])));
+        this.productCbx.setModel(new DefaultComboBoxModel<>(FormsListsController.getProducts().toArray(new Product[FormsListsController.getProducts().size()])));
 
         JLabel quantityLbl = new JLabel("Cantidad");
         this.quantityTxt = new JTextField();
@@ -42,8 +42,8 @@ public class FormDialogStock extends FormDialog {
         if (getCmd().equals("update")) {
             setTitle("Actualizar Almacén");
             stock = getContentTables().getSelectedStock();
-            this.storeCbx.getModel().setSelectedItem(ListsController.getStoreById(stock.getIdStore()));
-            this.productCbx.getModel().setSelectedItem(ListsController.getProductById(stock.getIdProduct()));
+            this.storeCbx.getModel().setSelectedItem(FormsListsController.getStoreById(stock.getIdStore()));
+            this.productCbx.getModel().setSelectedItem(FormsListsController.getProductById(stock.getIdProduct()));
             this.quantityTxt.setText(String.valueOf(stock.getQuantity()));
         } else {
             setTitle("Agregar Almacén");

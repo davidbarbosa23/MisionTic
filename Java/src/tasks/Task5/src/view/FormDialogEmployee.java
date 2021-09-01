@@ -1,6 +1,6 @@
 package view;
 
-import controller.ListsController;
+import controller.FormsListsController;
 import model.Employee;
 import model.Store;
 
@@ -34,7 +34,7 @@ public class FormDialogEmployee extends FormDialog {
 
         JLabel storeLbl = new JLabel("Seleccione bodega");
         this.storeCbx = new JComboBox<>();
-        this.storeCbx.setModel(new DefaultComboBoxModel<>(ListsController.getStores().toArray(new Store[ListsController.getStores().size()])));
+        this.storeCbx.setModel(new DefaultComboBoxModel<>(FormsListsController.getStores().toArray(new Store[FormsListsController.getStores().size()])));
 
         // Set title and default values
         if (getCmd().equals("update")) {
@@ -42,7 +42,7 @@ public class FormDialogEmployee extends FormDialog {
             employee = getContentTables().getSelectedEmployee();
             this.nameTxt.setText(employee.getName());
             this.ageTxt.setText(String.valueOf(employee.getAge()));
-            this.storeCbx.getModel().setSelectedItem(ListsController.getStoreById(employee.getIdStore()));
+            this.storeCbx.getModel().setSelectedItem(FormsListsController.getStoreById(employee.getIdStore()));
         } else {
             setTitle("Agregar Empleado");
             this.nameTxt.setText("");

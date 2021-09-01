@@ -11,10 +11,12 @@ public class Main extends JFrame {
     }
 
     private void createAndShowGUI() {
-        // Add content to the window.
+        // Init Content
         ContentTables contentTables = new ContentTables();
         ActionButtons actionButtons = new ActionButtons(contentTables);
-        add(new Tabs(actionButtons, contentTables), BorderLayout.CENTER);
+        Tabs tabs = new Tabs(actionButtons, contentTables);
+        // Add content to the window.
+        add(tabs, BorderLayout.CENTER);
         add(actionButtons, BorderLayout.SOUTH);
 
         // Create and set up the window.

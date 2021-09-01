@@ -25,12 +25,12 @@ import view.FormDialogStore;
 
 import javax.swing.JOptionPane;
 
-public class TabsActionsController implements ActionListener {
+public class ActionButtonsController implements ActionListener {
     private ActionButtons actionButtons;
     private ContentTables contentTables;
     private Frame mainFrame;
 
-    public TabsActionsController(ActionButtons actionButtons, ContentTables contentTables) {
+    public ActionButtonsController(ActionButtons actionButtons, ContentTables contentTables) {
         this.actionButtons = actionButtons;
         this.contentTables = contentTables;
     }

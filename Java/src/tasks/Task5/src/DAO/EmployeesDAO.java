@@ -1,6 +1,5 @@
 package DAO;
 
-import interfaces.IEmployeesDAO;
 import model.Employee;
 import model.Store;
 import util.DBConnection;

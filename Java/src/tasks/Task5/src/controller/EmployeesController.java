@@ -1,7 +1,7 @@
 package controller;
 
 import DAO.EmployeesDAO;
-import interfaces.IEmployeesDAO;
+import DAO.IEmployeesDAO;
 import model.Employee;
 
 import javax.swing.table.DefaultTableModel;

@@ -1,6 +1,5 @@
 package DAO;
 
-import interfaces.IStoresDAO;
 import model.Store;
 import util.DBConnection;
 

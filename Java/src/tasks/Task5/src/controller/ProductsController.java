@@ -1,7 +1,7 @@
 package controller;
 
 import DAO.ProductsDAO;
-import interfaces.IProductsDAO;
+import DAO.IProductsDAO;
 import model.Product;
 
 import javax.swing.table.DefaultTableModel;

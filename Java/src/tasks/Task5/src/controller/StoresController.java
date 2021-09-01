@@ -1,7 +1,7 @@
 package controller;
 
 import DAO.StoresDAO;
-import interfaces.IStoresDAO;
+import DAO.IStoresDAO;
 import model.Store;
 
 import javax.swing.table.DefaultTableModel;

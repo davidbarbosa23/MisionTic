@@ -1,7 +1,5 @@
 package view;
 
-import interfaces.IFormView;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

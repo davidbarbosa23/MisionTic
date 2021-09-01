@@ -1,6 +1,5 @@
 package DAO;
 
-import interfaces.IStocksDAO;
 import model.Product;
 import model.Stock;
 import model.Store;
